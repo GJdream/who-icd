@@ -70,7 +70,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return self.styles.count;
     return [self.codes count];
 }
 
@@ -83,7 +82,6 @@
         cell = [[UITableViewCell alloc] init];
         ICDRootClass *rootClass = [self.codes objectAtIndex:indexPath.row];
         NSString *cleanName = [[rootClass.name stringByRemovingNewLinesAndWhitespace] stringByStrippingHTML];
-        NSLog(@"name: %@", cleanName);
         [cell.textLabel setFont:[UIFont fontWithName:@"Avenir" size:16]];
         [cell.textLabel setLineBreakMode:NSLineBreakByCharWrapping];
         cell.textLabel.text = [NSString stringWithFormat:@"%@: %@",
