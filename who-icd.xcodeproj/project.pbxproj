@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B8A9C9941214F22BA322B4C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA73108D6D4418FAC213F73 /* libPods.a */; };
-		AE1C143E16C54DEB00B7853D /* PXEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1C143D16C54DEB00B7853D /* PXEngine.framework */; };
 		AE1C144316C550AE00B7853D /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = AE1C144216C550AE00B7853D /* default.css */; };
 		AE1C144516C550CF00B7853D /* tableView.scss in Resources */ = {isa = PBXBuildFile; fileRef = AE1C144416C550CF00B7853D /* tableView.scss */; };
 		AE770A1716C43694009888C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE770A1616C43694009888C2 /* UIKit.framework */; };
@@ -27,6 +26,11 @@
 		AE770A4516C44513009888C2 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = AE770A4416C44513009888C2 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE770A4916C44D1E009888C2 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = AE770A4816C44D1E009888C2 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE770A4C16C44E7F009888C2 /* NSString+HTMLStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = AE770A4B16C44E7F009888C2 /* NSString+HTMLStrip.m */; };
+		AEB748C016C573BE00903E40 /* PXEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB748BF16C573BE00903E40 /* PXEngine.framework */; };
+		AEB748C416C5760000903E40 /* navigationBar.scss in Resources */ = {isa = PBXBuildFile; fileRef = AEB748C316C5760000903E40 /* navigationBar.scss */; };
+		AEB748C616C586E900903E40 /* testing.out-scss in Resources */ = {isa = PBXBuildFile; fileRef = AEB748C516C586E900903E40 /* testing.out-scss */; };
+		AEDF8C5716C58A3E00B5BCCE /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEDF8C5616C58A3E00B5BCCE /* TableCell.xib */; };
+		AEDF8C5A16C58A6100B5BCCE /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF8C5916C58A6100B5BCCE /* TableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -46,8 +50,6 @@
 /* Begin PBXFileReference section */
 		0FA73108D6D4418FAC213F73 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F3DFE07BA54FB8BB41F64F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		AE1C143D16C54DEB00B7853D /* PXEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXEngine.framework; sourceTree = "<group>"; };
-		AE1C143F16C54E6E00B7853D /* PXEngineLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXEngineLicense.h; sourceTree = "<group>"; };
 		AE1C144216C550AE00B7853D /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		AE1C144416C550CF00B7853D /* tableView.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tableView.scss; sourceTree = "<group>"; };
 		AE770A1316C43694009888C2 /* who-icd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "who-icd.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,13 @@
 		AE770A4816C44D1E009888C2 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		AE770A4A16C44E7F009888C2 /* NSString+HTMLStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLStrip.h"; sourceTree = "<group>"; };
 		AE770A4B16C44E7F009888C2 /* NSString+HTMLStrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLStrip.m"; sourceTree = "<group>"; };
+		AEB748BF16C573BE00903E40 /* PXEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXEngine.framework; sourceTree = "<group>"; };
+		AEB748C216C574A700903E40 /* PXEngineLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXEngineLicense.h; sourceTree = "<group>"; };
+		AEB748C316C5760000903E40 /* navigationBar.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = navigationBar.scss; sourceTree = "<group>"; };
+		AEB748C516C586E900903E40 /* testing.out-scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "testing.out-scss"; sourceTree = "<group>"; };
+		AEDF8C5616C58A3E00B5BCCE /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		AEDF8C5816C58A6100B5BCCE /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		AEDF8C5916C58A6100B5BCCE /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +96,7 @@
 				AE770A1916C43694009888C2 /* Foundation.framework in Frameworks */,
 				AE770A1B16C43694009888C2 /* CoreGraphics.framework in Frameworks */,
 				1B8A9C9941214F22BA322B4C /* libPods.a in Frameworks */,
-				AE1C143E16C54DEB00B7853D /* PXEngine.framework in Frameworks */,
+				AEB748C016C573BE00903E40 /* PXEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +108,8 @@
 			children = (
 				AE1C144216C550AE00B7853D /* default.css */,
 				AE1C144416C550CF00B7853D /* tableView.scss */,
+				AEB748C516C586E900903E40 /* testing.out-scss */,
+				AEB748C316C5760000903E40 /* navigationBar.scss */,
 			);
 			name = CSS;
 			path = ..;
@@ -125,7 +136,7 @@
 		AE770A1516C43694009888C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AE1C143D16C54DEB00B7853D /* PXEngine.framework */,
+				AEB748BF16C573BE00903E40 /* PXEngine.framework */,
 				AE770A1616C43694009888C2 /* UIKit.framework */,
 				AE770A1816C43694009888C2 /* Foundation.framework */,
 				AE770A1A16C43694009888C2 /* CoreGraphics.framework */,
@@ -140,11 +151,9 @@
 				AE1C144116C54F8200B7853D /* CSS */,
 				AE770A4616C44CF1009888C2 /* Categories */,
 				AE770A3916C4379F009888C2 /* Model */,
+				AEDF8C5516C5897900B5BCCE /* View */,
 				AE770A2516C43694009888C2 /* AppDelegate.h */,
 				AE770A2616C43694009888C2 /* AppDelegate.m */,
-				AE770A2E16C43694009888C2 /* ViewController.h */,
-				AE770A2F16C43694009888C2 /* ViewController.m */,
-				AE770A3116C43695009888C2 /* ViewController.xib */,
 				AE770A1D16C43694009888C2 /* Supporting Files */,
 			);
 			path = "who-icd";
@@ -153,7 +162,6 @@
 		AE770A1D16C43694009888C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AE1C143F16C54E6E00B7853D /* PXEngineLicense.h */,
 				AE770A1E16C43694009888C2 /* who-icd-Info.plist */,
 				AE770A1F16C43694009888C2 /* InfoPlist.strings */,
 				AE770A2216C43694009888C2 /* main.m */,
@@ -161,6 +169,7 @@
 				AE770A2816C43694009888C2 /* Default.png */,
 				AE770A2A16C43694009888C2 /* Default@2x.png */,
 				AE770A2C16C43694009888C2 /* Default-568h@2x.png */,
+				AEB748C216C574A700903E40 /* PXEngineLicense.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -187,6 +196,19 @@
 				AE770A4816C44D1E009888C2 /* GTMNSString+HTML.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		AEDF8C5516C5897900B5BCCE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE770A2E16C43694009888C2 /* ViewController.h */,
+				AE770A2F16C43694009888C2 /* ViewController.m */,
+				AE770A3116C43695009888C2 /* ViewController.xib */,
+				AEDF8C5616C58A3E00B5BCCE /* TableCell.xib */,
+				AEDF8C5816C58A6100B5BCCE /* TableCell.h */,
+				AEDF8C5916C58A6100B5BCCE /* TableCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +271,9 @@
 				AE770A3316C43695009888C2 /* ViewController.xib in Resources */,
 				AE1C144316C550AE00B7853D /* default.css in Resources */,
 				AE1C144516C550CF00B7853D /* tableView.scss in Resources */,
+				AEB748C416C5760000903E40 /* navigationBar.scss in Resources */,
+				AEB748C616C586E900903E40 /* testing.out-scss in Resources */,
+				AEDF8C5716C58A3E00B5BCCE /* TableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +309,7 @@
 				AE770A4516C44513009888C2 /* NSString+HTML.m in Sources */,
 				AE770A4916C44D1E009888C2 /* GTMNSString+HTML.m in Sources */,
 				AE770A4C16C44E7F009888C2 /* NSString+HTMLStrip.m in Sources */,
+				AEDF8C5A16C58A6100B5BCCE /* TableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +403,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Pixate/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "who-icd/who-icd-Prefix.pch";
@@ -393,6 +420,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Pixate/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "who-icd/who-icd-Prefix.pch";

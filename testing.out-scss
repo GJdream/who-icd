@@ -1,0 +1,17 @@
+table-view {
+    background-color: linear-gradient(#75a4e6, #2670d8);
+    border-radius: 15pt;
+    border-width: 2pt;
+    border-color: white;
+    #size: 27pt 27pt;
+    #font-size: 16pt;
+    box-shadow: 1pt 1pt 1pt #333;
+}
+
+.tableViewCell {
+    background-color        : $_clearColor;
+    background-inset        : 5px;
+    border-radius           : 20px;
+    border-color            : red;
+    padding                 : 0 2px;
+}

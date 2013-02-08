@@ -16,6 +16,7 @@
     while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
         s = [[s stringByReplacingCharactersInRange:r withString:@""]
                 stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+    s = [[s substringFromIndex:1] substringToIndex:[s length]-1];
     return s;
 }
 

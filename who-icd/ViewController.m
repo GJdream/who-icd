@@ -9,12 +9,14 @@
 #import <RestKit/RestKit.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <NVSlideMenuController/NVSlideMenuController.h>
+#import <PXEngine/PXEngine.h>
 
 #import "ICDRootClass.h"
 #import "MappingProvider.h"
 #import "ViewController.h"
 #import "NSString+HTML.h"
 #import "NSString+HTMLStrip.h"
+#import "TableCell.h"
 
 #define ROOT_URL  @"http://apps.who.int/classifications/icd10/browse/2010/en/JsonGetRootConcepts"
 #define CHILD_URL @"http://apps.who.int/classifications/icd10/browse/2010/en/JsonGetChildrenConcepts?ConceptId=%@"
@@ -37,6 +39,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"ICD 2010";
+    self.navigationController.navigationBar.styleId = @"navigationBar";
+    self.tableView.separatorColor = [UIColor colorWithRed:0.820 green:0.832 blue:0.842 alpha:1.000];
 
     [SVProgressHUD show];
     if (self.passedID == nil) {
@@ -45,9 +49,9 @@
             [self loadICDCodesWithoutKVC];
         });
     } else {
+        [self setButtons];
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
-            NSLog(@"Passed ID: %@", self.passedID);
             [self loadICDCodesWithoutKVCWithID:self.passedID];
         });
     }
@@ -106,6 +110,24 @@
     [operation start];
 }
 
+#pragma mark - Scaffold
+- (void)setButtons {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.styleId = [NSString stringWithFormat:@"leftNavButton"];
+    button.styleClass = @"leftNavButton";
+    button.frame = CGRectMake(0,0,100,25);
+    [button addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    NSUInteger numberOfVCs = [self.navigationController.viewControllers count];
+    ViewController *vc = self.navigationController.viewControllers[numberOfVCs-1];
+    NSString *title = vc.passedID;
+    [button setTitle:title forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+- (void)backButtonPressed {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -121,17 +143,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
-        ICDRootClass *rootClass = [self.codes objectAtIndex:indexPath.row];
-        NSString *cleanName = [[rootClass.name stringByRemovingNewLinesAndWhitespace] stringByStrippingHTML];
-        [cell.textLabel setFont:[UIFont fontWithName:@"Avenir" size:16]];
-        [cell.textLabel setLineBreakMode:NSLineBreakByCharWrapping];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@: %@",
-                               rootClass.icdID,
-                               cleanName];
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"TableCell" owner:nil options:nil];
+        for (UIView *view in views) {
+            cell = (TableCell *)view;
+            cell.styleClass = @"tableViewCell";
+            ICDRootClass *rootClass = [self.codes objectAtIndex:indexPath.row];
+            NSString *cleanName = [[rootClass.name stringByRemovingNewLinesAndWhitespace] stringByStrippingHTML];
+            NSLog(@"Clean (%@)", cleanName);
+            cell.idLabel.text = rootClass.icdID;
+            cell.detailLabel.text = cleanName;
+        }
     }
     return cell;
 }
@@ -148,9 +172,9 @@
 }
 
 
-//- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 75.0f;
-//}
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 75.0f;
+}
 
 - (void)didReceiveMemoryWarning
 {

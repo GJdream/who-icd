@@ -1,4 +1,11 @@
+$_grey: rgb(240,240,240);
+$_clearColor: rgba(0,0,0,.4);
 
-table {
-    // blah blah
+table-view {
+    background-color: $_grey;
+    #box-shadow: 1pt 1pt 1pt #333;
+}
+
+.tableViewCell {
+
 }
