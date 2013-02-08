@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1B8A9C9941214F22BA322B4C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA73108D6D4418FAC213F73 /* libPods.a */; };
+		AE1C143E16C54DEB00B7853D /* PXEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1C143D16C54DEB00B7853D /* PXEngine.framework */; };
+		AE1C144316C550AE00B7853D /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = AE1C144216C550AE00B7853D /* default.css */; };
+		AE1C144516C550CF00B7853D /* tableView.scss in Resources */ = {isa = PBXBuildFile; fileRef = AE1C144416C550CF00B7853D /* tableView.scss */; };
 		AE770A1716C43694009888C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE770A1616C43694009888C2 /* UIKit.framework */; };
 		AE770A1916C43694009888C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE770A1816C43694009888C2 /* Foundation.framework */; };
 		AE770A1B16C43694009888C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE770A1A16C43694009888C2 /* CoreGraphics.framework */; };
@@ -26,9 +29,27 @@
 		AE770A4C16C44E7F009888C2 /* NSString+HTMLStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = AE770A4B16C44E7F009888C2 /* NSString+HTMLStrip.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		AE1C144016C54F4200B7853D /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.scss";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"${TARGET_BUILD_DIR}/${INPUT_FILE_BASE}.css",
+			);
+			script = "source /Users/${USER}/.rvm/environments/default\n${GEM_HOME}/bin/sass ${INPUT_FILE_PATH} ${TARGET_BUILD_DIR}/${INPUT_FILE_BASE}.css";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		0FA73108D6D4418FAC213F73 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F3DFE07BA54FB8BB41F64F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		AE1C143D16C54DEB00B7853D /* PXEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXEngine.framework; sourceTree = "<group>"; };
+		AE1C143F16C54E6E00B7853D /* PXEngineLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXEngineLicense.h; sourceTree = "<group>"; };
+		AE1C144216C550AE00B7853D /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
+		AE1C144416C550CF00B7853D /* tableView.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tableView.scss; sourceTree = "<group>"; };
 		AE770A1316C43694009888C2 /* who-icd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "who-icd.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE770A1616C43694009888C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE770A1816C43694009888C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,12 +87,23 @@
 				AE770A1916C43694009888C2 /* Foundation.framework in Frameworks */,
 				AE770A1B16C43694009888C2 /* CoreGraphics.framework in Frameworks */,
 				1B8A9C9941214F22BA322B4C /* libPods.a in Frameworks */,
+				AE1C143E16C54DEB00B7853D /* PXEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE1C144116C54F8200B7853D /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C144216C550AE00B7853D /* default.css */,
+				AE1C144416C550CF00B7853D /* tableView.scss */,
+			);
+			name = CSS;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		AE770A0A16C43694009888C2 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +125,7 @@
 		AE770A1516C43694009888C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE1C143D16C54DEB00B7853D /* PXEngine.framework */,
 				AE770A1616C43694009888C2 /* UIKit.framework */,
 				AE770A1816C43694009888C2 /* Foundation.framework */,
 				AE770A1A16C43694009888C2 /* CoreGraphics.framework */,
@@ -104,6 +137,7 @@
 		AE770A1C16C43694009888C2 /* who-icd */ = {
 			isa = PBXGroup;
 			children = (
+				AE1C144116C54F8200B7853D /* CSS */,
 				AE770A4616C44CF1009888C2 /* Categories */,
 				AE770A3916C4379F009888C2 /* Model */,
 				AE770A2516C43694009888C2 /* AppDelegate.h */,
@@ -119,6 +153,7 @@
 		AE770A1D16C43694009888C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AE1C143F16C54E6E00B7853D /* PXEngineLicense.h */,
 				AE770A1E16C43694009888C2 /* who-icd-Info.plist */,
 				AE770A1F16C43694009888C2 /* InfoPlist.strings */,
 				AE770A2216C43694009888C2 /* main.m */,
@@ -167,6 +202,7 @@
 				62FCF5726E2E477DA244B636 /* Copy Pods Resources */,
 			);
 			buildRules = (
+				AE1C144016C54F4200B7853D /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -211,6 +247,8 @@
 				AE770A2B16C43694009888C2 /* Default@2x.png in Resources */,
 				AE770A2D16C43694009888C2 /* Default-568h@2x.png in Resources */,
 				AE770A3316C43695009888C2 /* ViewController.xib in Resources */,
+				AE1C144316C550AE00B7853D /* default.css in Resources */,
+				AE1C144516C550CF00B7853D /* tableView.scss in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +321,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: E. Kevin Hall (3S8MJ9MBH8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: E. Kevin Hall (3S8MJ9MBH8)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -298,6 +337,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "C367F53A-6CB7-4CE9-AE2F-81081BCA564B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C367F53A-6CB7-4CE9-AE2F-81081BCA564B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -314,6 +355,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: E. Kevin Hall (3S8MJ9MBH8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -322,6 +364,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C367F53A-6CB7-4CE9-AE2F-81081BCA564B";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -331,6 +374,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76F3DFE07BA54FB8BB41F64F /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "who-icd/who-icd-Prefix.pch";
 				INFOPLIST_FILE = "who-icd/who-icd-Info.plist";
@@ -343,6 +390,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76F3DFE07BA54FB8BB41F64F /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "who-icd/who-icd-Prefix.pch";
 				INFOPLIST_FILE = "who-icd/who-icd-Info.plist";
