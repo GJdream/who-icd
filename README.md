@@ -7,6 +7,7 @@ who-icd
 *Note:* need to run CocoaPods "pod install" prior to build and then load the .xcworkspace.
 
 *Version Notes:*
+- [2/8/15:07] Added SASS styling.
 - [2/7/22:24] Added ability to drill down into subheadings. (No specific diseases yet, but possible to tell when we've reached the bottom by the ID)
 
 *Turns this:*
