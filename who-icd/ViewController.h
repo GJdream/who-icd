@@ -10,4 +10,6 @@
 
 @interface ViewController : UITableViewController
 
+@property (nonatomic, copy) NSString *passedID;
+
 @end

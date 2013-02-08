@@ -16,7 +16,9 @@
 #import "NSString+HTML.h"
 #import "NSString+HTMLStrip.h"
 
-#define ROOT_URL @"http://apps.who.int/classifications/icd10/browse/2010/en/JsonGetRootConcepts"
+#define ROOT_URL  @"http://apps.who.int/classifications/icd10/browse/2010/en/JsonGetRootConcepts"
+#define CHILD_URL @"http://apps.who.int/classifications/icd10/browse/2010/en/JsonGetChildrenConcepts?ConceptId=%@"
+
 
 @interface ViewController ()
 @property (nonatomic, strong) NSArray *codes;
@@ -24,15 +26,59 @@
 
 @implementation ViewController
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.passedID = [NSString string];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"ICD 2010";
+
     [SVProgressHUD show];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        [self loadICDCodesWithoutKVC];
-    });
+    if (self.passedID == nil) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [self loadICDCodesWithoutKVC];
+        });
+    } else {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            NSLog(@"Passed ID: %@", self.passedID);
+            [self loadICDCodesWithoutKVCWithID:self.passedID];
+        });
+    }
+    
+}
+
+- (void)loadICDCodesWithoutKVCWithID:(NSString *)passedID
+{
+    NSIndexSet *statusCodeSet = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    RKMapping *mapping = [MappingProvider ICDRootClassMapping];
+    RKResponseDescriptor *descriptor = [RKResponseDescriptor
+                                        responseDescriptorWithMapping:mapping
+                                        pathPattern:nil
+                                        keyPath:nil
+                                        statusCodes:statusCodeSet];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:CHILD_URL, passedID]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request
+                                                                        responseDescriptors:@[descriptor]];
+    [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        assert([NSThread isMainThread]);
+        self.codes = mappingResult.array;
+        [self.tableView reloadData];
+        [SVProgressHUD dismiss];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"ERROR: %@", error);
+        NSLog(@"Response: %@", operation.HTTPRequestOperation.responseString);
+        [SVProgressHUD showErrorWithStatus:@"Request Failed"];
+    }];
+    [operation start];
 }
 
 - (void)loadICDCodesWithoutKVC
@@ -93,10 +139,15 @@
 
 #pragma mark - Table view delegate
 
-- (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ViewController *vc = [[ViewController alloc] init];
+    vc.passedID = [[self.codes objectAtIndex:indexPath.row] icdID];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
+
 
 //- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 75.0f;
